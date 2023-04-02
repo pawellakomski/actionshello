@@ -1,0 +1,13 @@
+name: Hello World!!
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  build:
+    name: Here is my build task
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh pr comment $PR_URL --body "Thanks for your PR! We will review it shortly!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
