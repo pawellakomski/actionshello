@@ -19,4 +19,4 @@ jobs:
       - name: Check for Buttons
         run: ./.github/scripts/checker.sh
         env:
-          FILE: ./source/components/Buttons.js
+          FILE: ./src/components/Buttons.js
