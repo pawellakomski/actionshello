@@ -7,7 +7,12 @@ jobs:
     name: Here is my build task
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr comment $PR_URL --body "Thanks for your PR! We will review it shortly!"
+      - name: Comment on PR
+      run: gh pr comment $PR_URL --body "Thanks for your PR! We will review it shortly!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+      - name: Check for Buttons
+        run: ./.github/scripts/checker.sh
+        env:
+          FILE: ./source/components/Buttons.js
