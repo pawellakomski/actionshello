@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Testing for Buttins.js presence, hold on..."
+echo "Testing for Buttins.js presence, hold on please..."
 if test -f "$FILE"
 then
   echo "Found $FILE"

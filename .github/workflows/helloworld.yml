@@ -8,11 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Comment on PR
-      run: gh pr comment $PR_URL --body "Thanks for your PR! We will review it shortly!"
+        run: gh pr comment $PR_URL --body "Thanks for your PR! We will review it shortly!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Check for Buttons
         run: ./.github/scripts/checker.sh
         env:
-          FILE: ./source/components/Buttons.js
+          FILE: ./src/components/Buttons.js
